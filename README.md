@@ -20,13 +20,17 @@ source ~/path/to/LodoPHP/bash_aliases
 
 ## Usage
 
-The default **PHP** version is **7.4**. To use a specific version use `phpX.Y` or `composerX.Y`:
+The default **PHP** version is **7.4**, the default **Composer** version is **2**. To use a specific **PHP** version use `phpX.Y` or `composerX.Y`:
 ```shell
+# PHP 7.4
+php --version
+# PHP 8.1
 php8.1 --version
+# Composer 2 using PHP 8.1
 composer8.1 install
 ```
 
-## Updating images
+## Configuration
 
 To change the default **PHP** version, change the **bash_aliases** file:
 ```shell
@@ -34,7 +38,13 @@ alias php='phpX.Y'
 alias composer='composerX.Y'
 ```
 
-If you need to add more *PHP extensions*, add them to a **lodo.conf** file:
+You can also create a **lodo.conf** file in the repository and then rebuild the images:
+```shell
+make build
+```
+
+### Install additionnal PHP extensions:
+
 ```conf
 extensions="pdo_mysql xdebug"
 ```
@@ -42,14 +52,16 @@ extensions="pdo_mysql xdebug"
 [mlocati/docker-php-extension-installer](https://github.com/mlocati/docker-php-extension-installer#supported-php-extensions)
 support table.
 
-Then rebuild the images:
-```shell
-make build
+### Define the Composer version
+
+```conf
+composer_version="2.2.6"
 ```
+>Refer to the [Composer image tags](https://hub.docker.com/_/composer) on Docker Hub.
 
 ## How it works
 
-**PHP** *Docker images* are built using `cli-alpine` base images, installing **Composer 2**.
+**PHP** *Docker images* are built using `cli-alpine` base images, installing **Composer**.
 *Bash aliases* are used to call the right **Docker** commands to create a container. Every container is removed when stopped,
 uses the host *UID:GID* and the host network. The current directory is mounted into the container.
 Additionnally for **Composer**, a cache directory is mounted into the container too.
@@ -58,6 +70,5 @@ Additionnally for **Composer**, a cache directory is mounted into the container 
 
 **Lodo** is functional but still looks like a draft. To make it easier to use, here are the few feature ideas to implement:
 
- - **Composer** version management
  - **PHP** version switch from the command line ([nvm](https://github.com/nvm-sh/nvm) style)
  - packaging as a single binary
