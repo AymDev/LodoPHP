@@ -1,0 +1,16 @@
+alias php7.1='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app aymdev-php:7.1'
+alias php7.2='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app aymdev-php:7.2'
+alias php7.3='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app aymdev-php:7.3'
+alias php7.4='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app aymdev-php:7.4'
+alias php8.0='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app aymdev-php:8.0'
+alias php8.1='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app aymdev-php:8.1'
+
+alias composer7.1='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app -v ~/code/tooling/php/composer-cache:/.composer/cache --entrypoint composer aymdev-php:7.1'
+alias composer7.2='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app -v ~/code/tooling/php/composer-cache:/.composer/cache --entrypoint composer aymdev-php:7.2'
+alias composer7.3='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app -v ~/code/tooling/php/composer-cache:/.composer/cache --entrypoint composer aymdev-php:7.3'
+alias composer7.4='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app -v ~/code/tooling/php/composer-cache:/.composer/cache --entrypoint composer aymdev-php:7.4'
+alias composer8.0='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app -v ~/code/tooling/php/composer-cache:/.composer/cache --entrypoint composer aymdev-php:8.0'
+alias composer8.1='docker run --rm -it --network host -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/srv/app -v ~/code/tooling/php/composer-cache:/.composer/cache --entrypoint composer aymdev-php:8.1'
+
+alias php='php7.4'
+alias composer='composer7.4'
