@@ -34,9 +34,14 @@ alias php='phpX.Y'
 alias composer='composerX.Y'
 ```
 
-If you need to add more *PHP extensions*, add them to the `RUN` instruction in the **Dockerfile**. Refer to the
+If you need to add more *PHP extensions*, add them to a **lodo.conf** file:
+```conf
+extensions="pdo_mysql xdebug"
+```
+>Refer to the
 [mlocati/docker-php-extension-installer](https://github.com/mlocati/docker-php-extension-installer#supported-php-extensions)
 support table.
+
 Then rebuild the images:
 ```shell
 make build
@@ -44,7 +49,7 @@ make build
 
 ## How it works
 
-**PHP** *Docker images* are built using `cli-alpine` base images, installing **Composer 2** and the `pdo_mysql` extension.
+**PHP** *Docker images* are built using `cli-alpine` base images, installing **Composer 2**.
 *Bash aliases* are used to call the right **Docker** commands to create a container. Every container is removed when stopped,
 uses the host *UID:GID* and the host network. The current directory is mounted into the container.
 Additionnally for **Composer**, a cache directory is mounted into the container too.
@@ -53,7 +58,6 @@ Additionnally for **Composer**, a cache directory is mounted into the container 
 
 **Lodo** is functional but still looks like a draft. To make it easier to use, here are the few feature ideas to implement:
 
- - dynamic *PHP extensions* setup from an optional file
  - **Composer** version management
  - **PHP** version switch from the command line ([nvm](https://github.com/nvm-sh/nvm) style)
  - packaging as a single binary
